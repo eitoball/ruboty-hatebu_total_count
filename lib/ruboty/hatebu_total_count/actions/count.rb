@@ -28,7 +28,7 @@ module Ruboty
         def client
           XMLRPC::Client.new('b.hatena.ne.jp', '/xmlrpc', 80).tap do |c|
             # XXX: Hatena returns 'application/xml'
-            client.singleton_class.prepend(Module.new do
+            c.singleton_class.prepend(Module.new do
               define_method(:parse_content_type) do |_|
                 ['text/xml']
               end
