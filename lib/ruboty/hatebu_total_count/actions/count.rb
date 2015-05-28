@@ -16,6 +16,8 @@ module Ruboty
             message.reply(res)
           rescue XMLRPC::FaultException => e
             message.reply(e.faultString)
+          rescue => e
+            message.reply(e.message)
           end
         end
 
